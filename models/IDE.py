@@ -18,7 +18,7 @@ class IDE(nn.Module):
         self.cut_at_pooling = cut_at_pooling
 
         # Construct base (pretrained) resnet
-        self.base = torchvision.models.resnet50(pretrained=True)
+        self.base = torchvision.models.resnet50(pretrained=pretrained)
 
         if not self.cut_at_pooling:
             self.num_features = num_features
