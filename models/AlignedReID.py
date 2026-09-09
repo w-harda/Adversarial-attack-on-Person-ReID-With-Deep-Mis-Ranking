@@ -14,10 +14,10 @@ class ResNet50(nn.Module):
   Reference:
   Zhang, Xuan, et al. "Alignedreid: Surpassing human-level performance in person re-identification." arXiv preprint arXiv:1711.08184 (2017)
   """
-  def __init__(self, num_classes, **kwargs):
+  def __init__(self, num_classes, pretrained=True, **kwargs):
     super(ResNet50, self).__init__()
     self.loss = {'softmax', 'metric'}
-    resnet50 = torchvision.models.resnet50(pretrained=True)
+    resnet50 = torchvision.models.resnet50(pretrained=pretrained)
     self.base = nn.Sequential(*list(resnet50.children())[:-2])
     self.classifier = nn.Linear(2048, num_classes)
     self.feat_dim = 2048 # feature dimension
