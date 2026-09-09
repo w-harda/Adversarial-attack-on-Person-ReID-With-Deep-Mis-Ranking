@@ -29,9 +29,9 @@ def weights_init_classifier(m):
         init.constant(m.bias.data, 0.0)
 
 class DenseNet121(nn.Module):
-    def __init__(self, num_classes):
+    def __init__(self, num_classes, pretrained=True, **kwargs):
         super(DenseNet121,self).__init__()
-        model_ft = models.densenet121(pretrained=True)
+        model_ft = models.densenet121(pretrained=pretrained)
         # add pooling to the model
         # in the originial version, pooling is written in the forward function 
         model_ft.features.avgpool = nn.AdaptiveAvgPool2d((1,1))
